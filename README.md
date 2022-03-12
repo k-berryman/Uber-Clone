@@ -289,6 +289,48 @@ Specifically plug in names passed in to Stack.Screens
 
 Yay! And swiping works
 
+
+### Google Places AutoComplete Package and Google Places API and Google Directions API and Distance-Matrix API
+`yarn add react-native-google-places-autocomplete`
+
+Go to `cloud.google.com`, go to console, make a new project, enable a billing account, go to APIs & Services -> Dashboard, click enable APIs & services
+
+Search 'Directions API', click it, click enable
+Same for 'Places API'
+Same for 'Distance Matrix API'
+
+Go to credentials tab to get a key
+Click create credential, click API key, copy it & KEEP IT A SECRETTTT
+
+---
+
+In main dir, create `.env` and put the key in there
+Add `.env` to `.ignore`
+
+`yarn add react-native-dotenv`
+Go into `babel.config.js`
+and add
+```
+plugins: [
+ [
+   "module:react-native-dotenv",
+    {
+      moduleName: "@env",
+      path: ".env",
+    },
+  ],
+],
+```
+------
+
+### Google Places Autocomplete
+Go back to `HomeScreen.js`
+`import { GooglePlacesAutoComplete } from 'react-native-google-places-autocomplete';`
+`import { GOOGLE_MAPS_APIKEY } from '@env';`
+
+
+
+
 ### Notes
 React Native uses `<View>`s instead of `<div>`s
 Views get compiled into either iOS or Android components
