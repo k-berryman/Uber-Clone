@@ -341,6 +341,8 @@ Go back to `HomeScreen.js`
 />
 ```
 
+![Autocomplete Demo 1](./pics/autocomplete1.png)
+![Autocomplete Demo 2](./pics/autocomplete2.png)
 
 ### Notes
 React Native uses `<View>`s instead of `<div>`s
