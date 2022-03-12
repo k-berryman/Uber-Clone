@@ -2,7 +2,7 @@
 
 Followed the Uber Clone tutorial by Sonny Sanga ([click here](https://www.youtube.com/watch?v=bvn_HYpix6s&ab_channel=SonnySangha))
 
-React Native, iOS, Android, Redux, Tailwind CSS, Google's Directions API, Google's Places API, Google's Distance Matrix API, Google Autocomplete, React Native Elements, React Navigation, React Native Maps
+React Native, iOS, Android, Redux, Tailwind CSS, Google's Directions API, Google's Places API, Google's Distance Matrix API, Google Autocomplete, React Native Elements, React Native Navigation, React Native Maps
 
 ### Set Up Expo
 `sudo npm install -g expo-cli`
@@ -205,6 +205,89 @@ export default function App() {
 Now add in logo from react native elements
 https://reactnativeelements.com/docs/icon
 `import { Icon } from 'react-native-elements';` and `<Icon />`
+
+
+### React Native Navigation
+Create `screens/MapScreen.js` and add in a boilerplate
+
+```
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+
+const MapScreen = () => {
+  return (
+    <View>
+      <Text></Text>
+    </View>
+  )
+}
+
+export default MapScreen
+```
+
+Do the same for `EatsScreen`
+
+`yarn add @react-navigation/native`
+`expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+
+In `App.js`,
+`import 'react-native-gesture-handler'` (for swiping screens) and `import { NavigationContainer } from '@react-navigation/native';`
+
+Wrap our app
+```
+    <Provider store={store}>
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <HomeScreen />
+        </SafeAreaProvider>
+      </NavigationContainer>
+    </Provider>
+```
+
+`yarn add @react-navigation/stack` (stack screens up, then swipe back)
+
+----
+
+Make a Stack Navigator (In `App.js`)
+`import { createStackNavigator } from '@react-navigation/stack';`
+
+`const Stack = createStackNavigator();`
+
+Wrap our app again
+```
+    <Provider store={store}>
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <Stack.Navigator>
+            <HomeScreen />
+          </Stack.Navigator>
+        </SafeAreaProvider>
+      </NavigationContainer>
+```
+
+Include all screens we can navigate to
+```
+<Stack.Navigator>
+  <Stack.Screen name='HomeScreen' component={HomeScreen} />
+</Stack.Navigator>
+```
+
+Instead of putting component directly
+
+Now just make a `Stack.Screen` for MapScreen and EatsScreen too
+
+----
+
+Since screens are hierarchachly underneath our Navigator, we can get a navigation prop or useNavigation hook
+
+Go to `NavOptions`
+`import { useNavigation } from '@react-navigation/native';`
+`const navigation = useNavigation();`
+
+`onPress={() => navigation.navigate('')}`
+Specifically plug in names passed in to Stack.Screens
+
+Yay! And swiping works
 
 ### Notes
 React Native uses `<View>`s instead of `<div>`s
