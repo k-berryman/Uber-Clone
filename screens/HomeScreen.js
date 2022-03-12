@@ -28,7 +28,13 @@ const HomeScreen = () => {
               fontSize: 18
             }
           }}
-
+          onPress={(data, details=null) => {
+            // from Google's Details API??
+            console.log(data, '...', details)
+          }}
+          returnKeyType={"search"}
+          enablePoweredByContainer={false}
+          minLength={2}
           query={{
             key: GOOGLE_MAPS_APIKEY,
             language: 'en'
