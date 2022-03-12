@@ -21,12 +21,14 @@ Open up `App.js`
 `yarn add react-redux`
 
 Set up provider, which will wrap redux around our app
-In `App.js`, `import { Provider } from 'react-redux';`
+In `App.js`,
+`import { Provider } from 'react-redux';`
+`import { store } from './store';`
 
 ```
 export default function App() {
   return (
-    <Provider store={}>
+    <Provider store={store}>
       <View style={styles.container}>
         <Text>UBBBERRR</Text>
       </View>
@@ -99,6 +101,39 @@ export const selectTravelTimeInformation = (state) => state.nav.travelTimeInform
 
 Finally, `export default navSlice.reducer;` which will then be imported in `store.js`
 
+### Build HomeScreen Component
+Create `screens` folder. In that, create `HomeScreen.js`. Add a boilerplate.
+
+```
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+
+const HomeScreen = () => {
+  return (
+    <View>
+      <Text></Text>
+    <View>
+  )
+}
+
+export default HomeScreen
+
+const styles = StyleSheet.create({})
+```
+
+Go to `App.js`, `import HomeScreen from './screens/HomeScreen';` and `<HomeScreen />`
+
+We'll use a mix of normal styles and Tailwind
+
+### Set Up Tailwind React Native
+`yarn add tailwind-react-native-classnames`
+
+In `HomeScreen.js`,
+```
+import tw from 'tailwind-react-native-classnames;
+<Text style={tw`text-red-500`}>im home!!!</Text>
+```
+
 ### Notes
 React Native uses `<View>`s instead of `<div>`s
 Views get compiled into either iOS or Android components
@@ -117,3 +152,7 @@ We have `yarn.lock`, so let's use yarn.
 If we had `package.lock`, we'd use npm.
 
 Redux is a data layer for our app. Share data between any component. Push or pull data whenever.
+
+Use safe area view
+
+Use `<Image />` instead of `<img />`
