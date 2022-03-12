@@ -112,7 +112,7 @@ const HomeScreen = () => {
   return (
     <View>
       <Text></Text>
-    <View>
+    </View>
   )
 }
 
@@ -133,6 +133,78 @@ In `HomeScreen.js`,
 import tw from 'tailwind-react-native-classnames;
 <Text style={tw`text-red-500`}>im home!!!</Text>
 ```
+
+### Build NavOptions Component
+Create a folder `components` for components we'll reuse
+In that, create `NavOptions.js` and add a boilerplate
+
+```
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+
+const NavOptions = () => {
+  return (
+    <View>
+      <Text></Text>
+    </View>
+  )
+}
+
+export default NavOptions
+
+const styles = StyleSheet.create({})
+```
+
+Add the NavOptions component into HomeScreen component
+In HomeScreen.js, `import NavOptions from '../components/NavOptions';` and `<NavOptions />`
+
+In `NavOptions.js`, add the following
+```
+const data = [
+  {
+    id: '123',
+    title: 'Get a ride',
+    image: 'https://links.papareact.com/3pn',
+    screen: 'MapScreen',
+  },
+  {
+    id: '456',
+    title: 'Order food',
+    image: 'https://links.papareact.com/28w',
+    screen: 'EatsScreen',
+  },
+];
+```
+
+We're going to use a `FlatList` which is one component that takes some data & renders each item. By default it's vertical, but we're going to make it horizontal.
+
+To make an element look touchable in react native, add 'Touchable Opacity'
+
+`resizeMode` keeps the aspect ratio
+
+Use React Native Elements for icons
+`yarn add react-native-elements`
+`yarn add react-native-vector-icons`
+`yarn add react-native-safe-area-context` (for icons)
+
+Go to `App.js` and
+`import { SafeAreaProvider } from 'react-native-safe-area-context';`
+and then wrap our app
+```
+export default function App() {
+  return (
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <HomeScreen />
+      </SafeAreaProvider>
+    </Provider>
+  );
+}
+```
+
+Now add in logo from react native elements
+https://reactnativeelements.com/docs/icon
+`import { Icon } from 'react-native-elements';` and `<Icon />`
 
 ### Notes
 React Native uses `<View>`s instead of `<div>`s
