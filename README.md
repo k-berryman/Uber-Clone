@@ -321,6 +321,11 @@ plugins: [
   ],
 ],
 ```
+
+Restart server
+`expo start`
+if stuck, try out `expo r -c`
+
 ------
 
 ### Google Places Autocomplete
@@ -328,7 +333,13 @@ Go back to `HomeScreen.js`
 `import { GooglePlacesAutoComplete } from 'react-native-google-places-autocomplete';`
 `import { GOOGLE_MAPS_APIKEY } from '@env';`
 
-
+```
+<GooglePlacesAutocomplete
+  placeholder="Where from?"
+  nearbyPlaceAPI="GooglePlacesSearch" // Google Places API
+  debounce={400} // after you stop typing, wait for 4 seconds, and then search
+/>
+```
 
 
 ### Notes
